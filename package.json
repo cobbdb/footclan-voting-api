@@ -1,0 +1,25 @@
+{
+  "name": "footclan-voting-api",
+  "private": true,
+  "version": "1.0.0",
+  "description": "",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cobbdb/footclan-voting-api.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/cobbdb/footclan-voting-api/issues"
+  },
+  "homepage": "https://github.com/cobbdb/footclan-voting-api#readme",
+  "dependencies": {
+    "@hapi/hapi": "^18.3.1",
+    "debug": "^4.1.1",
+    "mongodb": "^3.3.0-beta2"
+  }
+}
