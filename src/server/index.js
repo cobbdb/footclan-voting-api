@@ -26,14 +26,8 @@ exports.startServer = () => {
         case 'user': {
           try {
             const data = JSON.parse(body);
-
-            if (method === 'PUT') {
-              await putUser(data.username, data);
-              console.log(`> USER ${username} UPDATED`);
-            } else if (method === 'POST') {
-              await postUser(data);
-              console.log(`> USER ${username} CREATED`);
-            }
+            await putUser(data.username, data);
+            console.log(`> USER ${username} UPDATED`);
           } catch (err) {
             console.log('> [ERROR]', err.message);
           }
