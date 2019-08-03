@@ -1,7 +1,9 @@
 const Hapi = require('@hapi/hapi');
+require('dotenv').config();
 
 const init = async () => {
   const server = Hapi.server({
+    host: 'localhost',
     port: 80,
   });
 
