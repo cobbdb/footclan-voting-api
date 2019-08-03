@@ -1,16 +1,16 @@
 const { MongoClient, ObjectId } = require('mongodb');
 const debug = require('debug')('app:setupDB');
 
-exports.setupDB = async function () {
+exports.setupDB = async () => {
   const url = process.env.DB_URL;
-  debug(`attempting to connect to database at ${url}`);
-  const dbName = 'tasks';
+  console.log(`> Attempting to connect to database at ${url}...`);
+
   try {
     const client = await MongoClient.connect(url, { useNewUrlParser: true });
-    const db = client.db(dbName);
+    const db = client.db('footclan');
     const collection = await db.collection('footclan');
     return { client: client, collection: collection };
   } catch (err) {
-    debug(err);
+    console.log(err);
   }
 };
