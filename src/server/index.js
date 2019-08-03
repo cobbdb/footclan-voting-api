@@ -16,17 +16,21 @@ exports.startServer = () => {
           try {
             const users = await getUsers();
             const data = JSON.stringify(users);
-            // ws.send(data);
+            ws.send(data);
             console.log('> ALL USERS RETURNED');
           } catch (err) {
-            console.log('ERR!', err.message);
+            console.log('> [ERROR]', err.message);
           }
           break;
         }
         case 'user': {
-          const data = JSON.parse(body);
-          await putUser(username, data);
-          console.log(`> USER ${username} UPDATED`);
+          try {
+            const data = JSON.parse(body);
+            await putUser(username, data);
+            console.log(`> USER ${username} UPDATED`);
+          } catch (err) {
+            console.log('> [ERROR]', err.message);
+          }
           break;
         }
         default:
