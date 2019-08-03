@@ -19,7 +19,7 @@ exports.startServer = () => {
             // ws.send(data);
             console.log('> ALL USERS RETURNED');
           } catch (err) {
-            console.log('ERR!', err);
+            console.log('ERR!', err.message);
           }
           break;
         }

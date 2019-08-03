@@ -8,8 +8,8 @@ exports.setupDB = async () => {
     const client = await MongoClient.connect(url, { useNewUrlParser: true });
     const db = client.db('footclan');
     const collection = await db.collection('footclan');
-    return { client: client, collection: collection };
+    return { client, collection };
   } catch (err) {
-    console.log(err);
+    console.log(err.message);
   }
 };
