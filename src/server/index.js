@@ -26,15 +26,21 @@ exports.startServer = () => {
         case 'user': {
           try {
             const data = JSON.parse(body);
-            await putUser(username, data);
-            console.log(`> USER ${username} UPDATED`);
+
+            if (method === 'PUT') {
+              await putUser(data.username, data);
+              console.log(`> USER ${username} UPDATED`);
+            } else if (method === 'POST') {
+              await postUser(data);
+              console.log(`> USER ${username} CREATED`);
+            }
           } catch (err) {
             console.log('> [ERROR]', err.message);
           }
           break;
         }
         default:
-          console.log(`> UNKONWN ENDPOINT ${endpoint}`);
+          console.log(`> UNKONWN ENDPOINT ${method}:${endpoint}`);
       }
     });
   });

@@ -28,3 +28,17 @@ exports.putUser = async (username, data) => {
     });
   });
 };
+
+exports.postUser = async (data) => {
+  const { collection } = await setupDB();
+
+  return new Promise((resolve, reject) => {
+    collection.insertOne(data, (err, user) => {
+      if (err) {
+        reject(err);
+      } else {
+        resolve(user);
+      }
+    });
+  });
+};
