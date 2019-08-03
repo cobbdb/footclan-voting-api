@@ -1,5 +1,4 @@
-const { MongoClient, ObjectId } = require('mongodb');
-const debug = require('debug')('app:setupDB');
+const { MongoClient } = require('mongodb');
 
 exports.setupDB = async () => {
   const url = process.env.DB_URL;
