@@ -1,7 +1,7 @@
 const WebSocket = require('ws');
 const { getUsers } = require('./handlers');
 
-exports.broadcast = (wss, data) => {
+const broadcast = (wss, data) => {
   wss.clients.forEach((client) => {
     if (client.readyState === WebSocket.OPEN) {
       client.send(data);
