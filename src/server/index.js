@@ -1,5 +1,6 @@
 const WebSocket = require('ws');
 const { getUsers, putUser } = require('./handlers');
+const { refreshClients } = require('./broadcast');
 
 exports.startServer = () => {
   const wss = new WebSocket.Server({ port: 8080 });
@@ -27,6 +28,7 @@ exports.startServer = () => {
           try {
             const data = JSON.parse(body);
             await putUser(data.username, data);
+            refreshClients(wss);
             console.log(`> USER ${username} UPDATED`);
           } catch (err) {
             console.log('> [ERROR]', err.message);
