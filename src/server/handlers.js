@@ -19,12 +19,17 @@ exports.putUser = async (username, data) => {
   const { collection } = await setupDB();
 
   return new Promise((resolve, reject) => {
-    collection.updateOne({ username }, data, { upsert: true }, (err, user) => {
-      if (err) {
-        reject(err);
-      } else {
-        resolve(user);
-      }
-    });
+    collection.updateOne(
+      { username },
+      { $set: { ...data } },
+      { upsert: true },
+      (err, user) => {
+        if (err) {
+          reject(err);
+        } else {
+          resolve(user);
+        }
+      },
+    );
   });
 };

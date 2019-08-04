@@ -11,7 +11,7 @@ exports.startServer = () => {
       console.log('received: %s', message);
       const [method, endpoint, username, body] = message.split('/');
 
-      switch (endpoint) {
+      switch (endpoint.toLowerCase()) {
         case 'users': {
           try {
             const users = await getUsers();
